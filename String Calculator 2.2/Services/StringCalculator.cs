@@ -25,7 +25,7 @@ namespace String_Calculator_2._2
             var numbersArray = _split.SplitNumbersToArray(numbers);
             var numbersList = _numbers.ConvertStringNumbersToIntList(numbersArray);
 
-            return _calculations.PerformCalculation(numbersList);
+            return _calculations.PerformCalculations(numbersList);
         }
     }
 }

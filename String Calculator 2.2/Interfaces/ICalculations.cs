@@ -2,6 +2,6 @@
 {
     public interface ICalculations
     {
-        int PerformCalculation(List<int> numbers);
+        int PerformCalculations(List<int> numbers);
     }
 }

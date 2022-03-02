@@ -22,7 +22,7 @@ namespace String_Calculator_Tests
             const int expected = -861;
 
             //act
-            var results = _calculations.PerformCalculation(input);
+            var results = _calculations.PerformCalculations(input);
 
             //assert
             Assert.AreEqual(expected, results);

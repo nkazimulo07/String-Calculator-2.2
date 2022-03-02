@@ -4,7 +4,7 @@ namespace String_Calculator_2._2.Services
 {
     public class Calculations : ICalculations
     {
-        public int PerformCalculation(List<int> numbers)
+        public int PerformCalculations(List<int> numbers)
         {
             var difference = 0;
 

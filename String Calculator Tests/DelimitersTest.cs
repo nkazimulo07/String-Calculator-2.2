@@ -2,7 +2,7 @@
 using String_Calculator_2._2.Services;
 using System.Collections.Generic;
 
-namespace StringCalculatorTest
+namespace String_Calculator_Tests
 {
     public class DelimitersTest
     {
