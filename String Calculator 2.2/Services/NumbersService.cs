@@ -15,7 +15,7 @@ namespace String_Calculator_2._2.Services
         {
             bool isNumeric = true;
             var numbersList = new List<int>();
-            var tempNumber = 0;
+            var temporalNumber = 0;
 
             foreach (var number in numbers)
             {
@@ -23,14 +23,14 @@ namespace String_Calculator_2._2.Services
 
                 if (!isNumeric)
                 {
-                    tempNumber = ConvertCharacterToInt(char.Parse(number));
+                    temporalNumber = ConvertCharacterToInt(char.Parse(number));
                 }
                 else
                 {
-                    tempNumber = Math.Abs(Convert.ToInt32(number));
+                    temporalNumber = Math.Abs(Convert.ToInt32(number));
                 }
 
-                numbersList.Add(Math.Abs(tempNumber));
+                numbersList.Add(Math.Abs(temporalNumber));
             }
 
             CheckForNumbersGreaterThanOneThousand(numbersList);
