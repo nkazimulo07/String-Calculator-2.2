@@ -56,7 +56,7 @@ namespace StringCalculatorTest
             var expected = new List<int> { 0, 1, 2 };
 
             //act
-            var results = _numbers.ConvertStringNumbersToIntList(input);
+            var results = _numbers.ConvertStringsToNumbers(input);
 
             //assert
             Assert.AreEqual(expected, results);

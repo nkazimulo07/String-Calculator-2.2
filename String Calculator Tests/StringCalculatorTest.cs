@@ -2,6 +2,7 @@ using NSubstitute;
 using NUnit.Framework;
 using String_Calculator_2._2;
 using String_Calculator_2._2.Interfaces;
+using String_Calculator_2._2.Services;
 using System.Collections.Generic;
 
 namespace String_Calculator_Tests
@@ -46,7 +47,7 @@ namespace String_Calculator_Tests
             var numbersList = new List<int>() { 1 };
 
             _splitMock.SplitNumbers(Arg.Any<string>()).Returns(numbersStringArray);
-            _numbersMock.ConvertStringsNumbers(Arg.Any<string[]>()).Returns(numbersList);
+            _numbersMock.ConvertStringsToNumbers(Arg.Any<string[]>()).Returns(numbersList);
             _calculationsMock.PerformCalculations(numbersList).Returns(expected);
 
             //act
@@ -66,7 +67,7 @@ namespace String_Calculator_Tests
             var numbersList = new List<int>() { 1, 2 };
 
             _splitMock.SplitNumbers(Arg.Any<string>()).Returns(numbersStringArray);
-            _numbersMock.ConvertStringsNumbers(Arg.Any<string[]>()).Returns(numbersList);
+            _numbersMock.ConvertStringsToNumbers(Arg.Any<string[]>()).Returns(numbersList);
             _calculationsMock.PerformCalculations(numbersList).Returns(expected);
 
             //act
@@ -86,7 +87,7 @@ namespace String_Calculator_Tests
             var numbersList = new List<int>() { 1, 2, 3};
 
             _splitMock.SplitNumbers(Arg.Any<string>()).Returns(numbersStringArray);
-            _numbersMock.ConvertStringsNumbers(Arg.Any<string[]>()).Returns(numbersList);
+            _numbersMock.ConvertStringsToNumbers(Arg.Any<string[]>()).Returns(numbersList);
             _calculationsMock.PerformCalculations(numbersList).Returns(expected);
 
             //act
@@ -106,7 +107,7 @@ namespace String_Calculator_Tests
             var numbersList = new List<int>() { 1, 2 };
 
             _splitMock.SplitNumbers(Arg.Any<string>()).Returns(numbersStringArray);
-            _numbersMock.ConvertStringsNumbers(Arg.Any<string[]>()).Returns(numbersList);
+            _numbersMock.ConvertStringsToNumbers(Arg.Any<string[]>()).Returns(numbersList);
             _calculationsMock.PerformCalculations(numbersList).Returns(expected);
 
             //act
@@ -126,7 +127,7 @@ namespace String_Calculator_Tests
             var numbersList = new List<int>() { 1, 2 };
 
             _splitMock.SplitNumbers(Arg.Any<string>()).Returns(numbersStringArray);
-            _numbersMock.ConvertStringsNumbers(Arg.Any<string[]>()).Returns(numbersList);
+            _numbersMock.ConvertStringsToNumbers(Arg.Any<string[]>()).Returns(numbersList);
             _calculationsMock.PerformCalculations(numbersList).Returns(expected);
 
             //act
@@ -140,13 +141,13 @@ namespace String_Calculator_Tests
         public void Given_StringWithLetters_When_Subtracting_Return_Difference()
         {
             //assert
-            const string input = "i,j,k";
+            const string input = "i,j,k,%";
             const int expected = -17;
             string[] numbersStringArray = { "1", "2" };
             var numbersList = new List<int>() { 1, 2 };
 
             _splitMock.SplitNumbers(Arg.Any<string>()).Returns(numbersStringArray);
-            _numbersMock.ConvertStringsNumbers(Arg.Any<string[]>()).Returns(numbersList);
+            _numbersMock.ConvertStringsToNumbers(Arg.Any<string[]>()).Returns(numbersList);
             _calculationsMock.PerformCalculations(numbersList).Returns(expected);
 
             //act
@@ -156,5 +157,12 @@ namespace String_Calculator_Tests
             Assert.AreEqual(expected, results);
         }
 
+        [Test]
+        public void Test()
+        {
+            var stringCalc = new StringCalculator(new NumbersService(new ErrorHandlingService()), new Calculations(), new SplitService(new DelimitersService()));
+            var result = stringCalc.Subtract("i,j,&");
+
+        }
     }
 }

@@ -7,32 +7,32 @@ namespace String_Calculator_2._2.Services
         private readonly IErrorHandling _errorHandling;
 
         const int MaximumNumber = 1000;
-        const int bigNumber = 9;
+        const int BigNumber = 9;
+
         public NumbersService(IErrorHandling errorHandling)
         {
             _errorHandling = errorHandling;
         }
 
-        public List<int> ConvertStringsNumbers(string[] numbers)
+        public List<int> ConvertStringsToNumbers(string[] numbers)
         {
-            bool isNumeric = true;
+            
             var numbersList = new List<int>();
-            var temporalNumber = 0;
 
             foreach (var number in numbers)
             {
-                isNumeric = int.TryParse(number, out int _);
+                var temporalNumber = 0;
 
-                if (!isNumeric)
+                if (char.IsLetter(number[0]))
                 {
                     temporalNumber = ConvertCharacterToInt(char.Parse(number));
                 }
-                else
+                else if (char.IsLetter(number[0]))
                 {
                     temporalNumber = Math.Abs(Convert.ToInt32(number));
                 }
 
-                numbersList.Add(Math.Abs(temporalNumber));
+                numbersList.Add(temporalNumber);
             }
 
             CheckForNumbersGreaterThanOneThousand(numbersList);
@@ -63,7 +63,7 @@ namespace String_Calculator_2._2.Services
         {
             var number = char.ToUpper(alphebet) - 65;
 
-            if (number > bigNumber)
+            if (number > BigNumber)
             {
                 return 0;
             }

@@ -30,7 +30,7 @@ namespace String_Calculator_Tests
             _delimitersMock.GetDelimiters(Arg.Any<string>()).Returns(delimiters);
 
             //act
-            var results = _split.SplitNumbersToArray(input);
+            var results = _split.SplitNumbers(input);
 
             //assert
             Assert.AreEqual(expected, results);

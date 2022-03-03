@@ -22,8 +22,8 @@ namespace String_Calculator_2._2
                 return 0;
             }
 
-            var numbersArray = _split.SplitNumbersToArray(numbers);
-            var numbersList = _numbers.ConvertStringNumbersToIntList(numbersArray);
+            var numbersArray = _split.SplitNumbers(numbers);
+            var numbersList = _numbers.ConvertStringsToNumbers(numbersArray);
 
             return _calculations.PerformCalculations(numbersList);
         }
