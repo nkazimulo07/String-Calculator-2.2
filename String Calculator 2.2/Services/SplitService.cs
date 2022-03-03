@@ -14,7 +14,7 @@ namespace String_Calculator_2._2.Services
             _delimiters = delimiters;
         }
 
-        public string[] SplitNumbersToArray(string numbers)
+        public string[] SplitNumbers(string numbers)
         {
             var delimiters = _delimiters.GetDelimiters(numbers);
 

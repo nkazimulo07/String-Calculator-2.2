@@ -62,8 +62,9 @@ namespace String_Calculator_2._2.Services
             char rightseperator = number[number.IndexOf(HashTags) - 1];
             char[] charsToTrim = { leftseperator, rightseperator };
             string cleanDelimiter = delimiter.Trim(charsToTrim);
-
-            return cleanDelimiter.Split(new string[] { rightseperator.ToString(), leftseperator.ToString() }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            string[] flaggedDelimiter = cleanDelimiter.Split(new string[] { rightseperator.ToString(), leftseperator.ToString() }, StringSplitOptions.RemoveEmptyEntries);
+            
+            return flaggedDelimiter.ToList();
         }
     }
 }

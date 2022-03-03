@@ -2,7 +2,7 @@
 {
     public interface INumbers
     {
-        List<int> ConvertStringNumbersToIntList(string[] number);
+        List<int> ConvertStringsNumbers(string[] number);
 
     }
 }

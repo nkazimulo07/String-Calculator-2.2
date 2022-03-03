@@ -6,12 +6,14 @@ namespace String_Calculator_2._2.Services
     {
         private readonly IErrorHandling _errorHandling;
 
+        const int MaximumNumber = 1000;
+        const int bigNumber = 9;
         public NumbersService(IErrorHandling errorHandling)
         {
             _errorHandling = errorHandling;
         }
 
-        public List<int> ConvertStringNumbersToIntList(string[] numbers)
+        public List<int> ConvertStringsNumbers(string[] numbers)
         {
             bool isNumeric = true;
             var numbersList = new List<int>();
@@ -41,11 +43,11 @@ namespace String_Calculator_2._2.Services
         public void CheckForNumbersGreaterThanOneThousand(List<int> numbersList)
         {
             var bigNumbers = "";
-            var errorMessage = "You can't subtract numbers greater than 1000 :";
+            var errorMessageTemplate = "You can't subtract numbers greater than 1000 :";
 
             foreach (var number in numbersList)
             {
-                if (number > 1000)
+                if (number > MaximumNumber)
                 {
                     bigNumbers = number + " ";
                 }
@@ -53,7 +55,7 @@ namespace String_Calculator_2._2.Services
 
             if (!string.IsNullOrEmpty(bigNumbers))
             {
-                _errorHandling.ThrowException(errorMessage + bigNumbers);
+                _errorHandling.ThrowException(errorMessageTemplate + bigNumbers);
             }
         }
 
@@ -61,7 +63,7 @@ namespace String_Calculator_2._2.Services
         {
             var number = char.ToUpper(alphebet) - 65;
 
-            if (number > 9)
+            if (number > bigNumber)
             {
                 return 0;
             }

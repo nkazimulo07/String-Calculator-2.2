@@ -2,6 +2,6 @@
 {
     public interface ISplit
     {
-        string[] SplitNumbersToArray(string numbers);
+        string[] SplitNumbers(string numbers);
     }
 }
