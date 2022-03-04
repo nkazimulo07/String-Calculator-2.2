@@ -25,7 +25,7 @@ namespace StringCalculatorTest
             // arrange
             var input = new List<int> { 1000, 2000, 6000 };
             string expected = "You can't subtract numbers greater than 1000 : 1000 2000 6000 ";
-            _errorHandlingMock.When(_numbers => _numbers.ThrowException(Arg.Any<string>())).Do(x => throw new Exception(expected));
+            _errorHandlingMock.When(_numbers => _numbers.ThrowNumbersTooLargeException(Arg.Any<string>())).Do(x => throw new Exception(expected));
 
             //act
             var results = Assert.Throws<System.Exception>(() => _numbers.CheckForNumbersGreaterThanOneThousand(input));

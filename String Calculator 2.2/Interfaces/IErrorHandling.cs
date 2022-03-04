@@ -2,6 +2,6 @@
 {
     public interface IErrorHandling
     {
-        void ThrowException(string exceptionMessage);
+        void ThrowNumbersTooLargeException(string bigNumbers);
     }
 }

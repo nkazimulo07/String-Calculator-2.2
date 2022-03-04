@@ -27,7 +27,7 @@ namespace String_Calculator_Tests
             var delimiters = new List<string>() { ",", "\n" };
             string[] expected = { "1", "2" };
 
-            _delimitersMock.GetDelimiters(Arg.Any<string>()).Returns(delimiters);
+            _delimitersMock.GetDelimiters(input).Returns(delimiters);
 
             //act
             var results = _split.SplitNumbers(input);

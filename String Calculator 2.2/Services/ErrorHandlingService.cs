@@ -4,9 +4,9 @@ namespace String_Calculator_2._2.Services
 {
     public class ErrorHandlingService : IErrorHandling
     {
-        public void ThrowException(string exceptionMessage)
+        public void ThrowNumbersTooLargeException(string bigNumbers)
         {
-            throw new Exception(exceptionMessage);
+            throw new Exception(Constants.Constants.errorMessageTemplate + bigNumbers);
         }
     }
 }

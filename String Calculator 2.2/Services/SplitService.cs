@@ -6,9 +6,6 @@ namespace String_Calculator_2._2.Services
     {
         private readonly IDelimiters _delimiters;
 
-        const string HashTags = "##";
-        const string NewLine = "\n";
-
         public SplitService(IDelimiters delimiters)
         {
             _delimiters = delimiters;
@@ -18,9 +15,9 @@ namespace String_Calculator_2._2.Services
         {
             var delimiters = _delimiters.GetDelimiters(numbers);
 
-            if (numbers.StartsWith(HashTags))
+            if (numbers.StartsWith(Constants.Constants.HashTags))
             {
-                numbers = numbers.Substring(numbers.LastIndexOf(NewLine) + 1);
+                numbers = numbers.Substring(numbers.LastIndexOf(Constants.Constants.NewLine) + 1);
 
             }
 

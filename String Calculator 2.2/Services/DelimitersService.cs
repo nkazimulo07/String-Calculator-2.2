@@ -4,22 +4,15 @@ namespace String_Calculator_2._2.Services
 {
     public class DelimitersService : IDelimiters
     {
-        const string HashTags = "##";
-        const string NewLine = "\n";
-        const char LeftSqureBracket = '[';
-        const char RightSqureBracket = ']';
-        const string SquareBrackets = "][";
-        const char Flag = '<';
-
         public List<string> GetDelimiters(string numbers)
         {
-            var delimiters = new List<string>() { ",", "\n" };
+            var delimiters = new List<string>() { ",", Constants.Constants.NewLine };
 
-            if (numbers.StartsWith(HashTags))
+            if (numbers.StartsWith(Constants.Constants.HashTags))
             {
                 delimiters.AddRange(CustomDelimiter(numbers));
             }
-            else if (numbers.StartsWith(Flag))
+            else if (numbers.StartsWith(Constants.Constants.Flag))
             {
                 delimiters.AddRange(FlaggedDelimiter(numbers));
             }
@@ -30,11 +23,11 @@ namespace String_Calculator_2._2.Services
         public List<string> CustomDelimiter(string numbers)
         {
             var delimiters = new List<string>();
-            var customDelimiterStartingPoint = numbers.IndexOf(HashTags) + 2;
-            var customDelimiterEndingPoint = numbers.IndexOf(NewLine) - 2;
+            var customDelimiterStartingPoint = numbers.IndexOf(Constants.Constants.HashTags) + 2;
+            var customDelimiterEndingPoint = numbers.IndexOf(Constants.Constants.NewLine) - 2;
             var customDelimiter = numbers.Substring(customDelimiterStartingPoint, customDelimiterEndingPoint);
 
-            if (customDelimiter.StartsWith(LeftSqureBracket) && customDelimiter.EndsWith(RightSqureBracket))
+            if (customDelimiter.StartsWith(Constants.Constants.LeftSqureBracket) && customDelimiter.EndsWith(Constants.Constants.RightSqureBracket))
             {
                 delimiters.AddRange(MultipleDelimiters(customDelimiter));
             }
@@ -48,18 +41,18 @@ namespace String_Calculator_2._2.Services
 
         public List<string> MultipleDelimiters(string delimiters)
         {
-            char[] charsToTrim = { LeftSqureBracket, RightSqureBracket };
+            char[] charsToTrim = { Constants.Constants.LeftSqureBracket, Constants.Constants.RightSqureBracket };
             string cleanDelimiter = delimiters.Trim(charsToTrim);
-            string[] multipleDelimiter = cleanDelimiter.Split(new string[] { SquareBrackets }, StringSplitOptions.RemoveEmptyEntries);
+            string[] multipleDelimiter = cleanDelimiter.Split(new string[] { Constants.Constants.SquareBrackets }, StringSplitOptions.RemoveEmptyEntries);
 
             return multipleDelimiter.ToList();
         }
 
         public List<string> FlaggedDelimiter(string number)
         {
-            var delimiter = number.Substring(number.IndexOf(HashTags) + 2, number.IndexOf(NewLine) - 6);
+            var delimiter = number.Substring(number.IndexOf(Constants.Constants.HashTags) + 2, number.IndexOf(Constants.Constants.NewLine) - 6);
             char leftseperator = number[1];
-            char rightseperator = number[number.IndexOf(HashTags) - 1];
+            char rightseperator = number[number.IndexOf(Constants.Constants.HashTags) - 1];
             char[] charsToTrim = { leftseperator, rightseperator };
             string cleanDelimiter = delimiter.Trim(charsToTrim);
             string[] flaggedDelimiter = cleanDelimiter.Split(new string[] { rightseperator.ToString(), leftseperator.ToString() }, StringSplitOptions.RemoveEmptyEntries);

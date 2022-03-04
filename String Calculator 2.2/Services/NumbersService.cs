@@ -43,7 +43,6 @@ namespace String_Calculator_2._2.Services
         public void CheckForNumbersGreaterThanOneThousand(List<int> numbersList)
         {
             var bigNumbers = "";
-            var errorMessageTemplate = "You can't subtract numbers greater than 1000 :";
 
             foreach (var number in numbersList)
             {
@@ -55,7 +54,7 @@ namespace String_Calculator_2._2.Services
 
             if (!string.IsNullOrEmpty(bigNumbers))
             {
-                _errorHandling.ThrowException(errorMessageTemplate + bigNumbers);
+                _errorHandling.ThrowNumbersTooLargeException(bigNumbers);
             }
         }
 
